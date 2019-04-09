@@ -52,6 +52,8 @@
     <string name="settings_about_us">About Us</string>
     <string name="settings_privacy_policy">Privacy Policy</string>
     <string name="settings_open_wallet">My wallet</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="msg_feed_provider_logo">feed provider logo</string>
 
     <string name="choose_language">Choose a Language</string>
     <string name="ok">OK</string>
