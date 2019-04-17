@@ -36,6 +36,8 @@ import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.PublishSubject;
 import timber.log.Timber;
 
+import static com.w3engineers.unicef.telemesh.data.helper.constants.Constants.DataType.SUPER_PEER_MESSAGE;
+
 /**
  * * ============================================================================
  * * Copyright (C) 2018 W3 Engineers Ltd - All Rights Reserved.
@@ -179,7 +181,7 @@ public class RmDataHelper {
      * @param data -> raw data
      * @param type -> data type
      */
-    private void dataSend(byte[] data, byte type, String userId) {
+    private void dataSend(byte[] data, int type, String userId) {
 
         RMDataModel rmDataModel = RMDataModel.newBuilder()
                 .setRawData(ByteString.copyFrom(data))
@@ -213,6 +215,10 @@ public class RmDataHelper {
 
         int dataType = rmDataModel.getDataType();
         byte[] rawData = rmDataModel.getRawData().toByteArray();
+
+        String rawString = new String(rawData);
+        //Timber.tag("rawString").e(rawString);
+
         String userId = rmDataModel.getUserMeshId();
 
         switch (dataType) {
@@ -229,21 +235,35 @@ public class RmDataHelper {
             // Message received from base station.
             case Constants.DataType.MESSAGE_FEED:
                 // Parse the raw data and build feed entity
+                Log.e("rawString from mesh :: ", rawString);
                 FeedEntity feedEntity = parseFeedData(rawData);
                 if (feedEntity != null) {
                     // save the data into the db
                     dataSource.insertOrUpdateData(feedEntity);
                 }
+                String broadcastMessage = new String(rawData);
+                feedCallback.feedMessage(broadcastMessage);
                 break;
 
-            // Message received from base station.
 
-            case Constants.DataType.BROADCAST_MESSAGE:
-                // This message is received from SP and it should be broadcast
-                String broadcastString = new String(rawData);
-                feedCallback.feedMessage(broadcastString);
-                // TODO we have to update the message type before broadcast, others state will be same
-                rightMeshDataSource.broadcastMessage(rawData);
+
+            //case Constants.DataType.BROADCAST_MESSAGE:
+
+
+
+            //When message received from SP
+            case Constants.DataType.SUPER_PEER_MESSAGE:
+                // This message is received from SP
+                Log.e("rawString from sp:: ", rawString);
+                String superpeerMessage = "SuperPeer Message: "+ new String(rawData);
+
+                //After receiving message from SP we will broadcast this sample message
+                /*String localBroadcast = "Local Broadcast Message";
+                byte[] rawByte = localBroadcast.getBytes();
+                rightMeshDataSource.broadcastMessage(rawByte);*/
+
+                // send callback to ui layer
+                feedCallback.feedMessage(superpeerMessage);
                 break;
         }
         return -1L;

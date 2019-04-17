@@ -58,12 +58,14 @@ public class Constants {
 
     public interface DataType {
         //RM data type
-        byte USER = 0x1;
-        byte MESSAGE = 0x2;
-        byte SURVEY = 0x3;
-        byte MESSAGE_FEED = 0x4;
-        byte BROADCAST_MESSAGE = 0x5;
+        int USER = 1;
+        int MESSAGE = 2;
+        int SURVEY = 3;
+        int MESSAGE_FEED = 4;
+        int BROADCAST_MESSAGE = 5;
+        int SUPER_PEER_MESSAGE = 70;
     }
+
 
     public interface MessageType {
         int TEXT_MESSAGE = 100;

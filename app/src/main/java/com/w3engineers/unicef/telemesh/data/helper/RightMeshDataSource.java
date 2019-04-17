@@ -116,7 +116,8 @@ public class RightMeshDataSource extends BaseRmDataSource {
 
         for(int i=0; i< size; i++){
 
-            Log.e("Live Peers", "size:"+ size + " PeerId: "+livePeers.get(i).mMeshPeer.getPeerId());
+            //Log.e("Live Peers", "size:"+ size + " PeerId: "+livePeers.get(i).mMeshPeer.getPeerId());
+            Log.e("rawData at Bcast time",  ""+new String(rawData));
 
             if(livePeers.get(i).mMeshPeer.getPeerId()!= null){
 
