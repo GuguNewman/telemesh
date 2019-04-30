@@ -13,6 +13,7 @@ import android.content.Intent;
 
 public class InAppShareControl {
 
+
     private static InAppShareControl inAppShareControl = new InAppShareControl();
     private Context context;
     private AppShareCallback appShareCallback;
