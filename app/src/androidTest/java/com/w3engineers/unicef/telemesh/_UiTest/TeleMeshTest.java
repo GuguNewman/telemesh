@@ -4,6 +4,7 @@ package com.w3engineers.unicef.telemesh._UiTest;
 import android.arch.persistence.room.Room;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.NoActivityResumedException;
+import android.support.test.espresso.PerformException;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -401,7 +402,12 @@ public class TeleMeshTest {
                                                 withId(R.id.layout_scroll),
                                                 0)),
                                 3)));
-        againLayoutShareApp.perform(click());
+
+        try {
+            againLayoutShareApp.perform(click());
+        } catch (PerformException e) {
+            e.printStackTrace();
+        }
 
         addDelay(5000);
 
