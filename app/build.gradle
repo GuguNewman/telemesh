@@ -132,8 +132,8 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.4.0'
     implementation 'com.orhanobut:dialogplus:1.11@aar'
     implementation 'com.google.zxing:core:3.3.3'
-
-    api project(':appshare')
+    implementation 'com.github.MimoSaha:app-share:1.1.0'
+//    api project(':appshare')
 
     /*androidTestImplementation group: 'com.github.javafaker', name: 'javafaker', version: '0.16'*/
 

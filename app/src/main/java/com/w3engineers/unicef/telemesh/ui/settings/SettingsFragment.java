@@ -95,7 +95,7 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
             case R.id.layout_share_app:
                 // In app share process trigger to start
 //                startActivity(new Intent(getActivity(), InAppShareActivity.class));
-//                settingsViewModel.startInAppShareProcess();
+                settingsViewModel.startInAppShareProcess();
                 break;
             case R.id.layout_about_us:
                 // Show about us
