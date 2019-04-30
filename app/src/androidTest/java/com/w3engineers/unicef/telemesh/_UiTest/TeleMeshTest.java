@@ -401,7 +401,7 @@ public class TeleMeshTest {
                                                 withId(R.id.layout_scroll),
                                                 0)),
                                 3)));
-        againLayoutShareApp.perform(scrollTo(), click());
+        againLayoutShareApp.perform(click());
 
         addDelay(5000);
 
