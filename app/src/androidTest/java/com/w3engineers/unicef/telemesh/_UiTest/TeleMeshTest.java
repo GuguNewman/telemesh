@@ -403,9 +403,9 @@ public class TeleMeshTest {
                                 3)));
         againLayoutShareApp.perform(click());
 
-        addDelay(5000);
-
-        mDevice.pressBack();
+//        addDelay(5000);
+//
+//        mDevice.pressBack();
 
         addDelay(700);
 
