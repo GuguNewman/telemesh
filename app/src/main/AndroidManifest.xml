@@ -51,7 +51,6 @@
         <activity
             android:name=".ui.chat.ChatActivity"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.inappshare.InAppShareActivity" />
     </application>
 
 </manifest>
